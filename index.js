@@ -14,6 +14,9 @@ function log(req, res, next) {
 }
 app.use(log);
 
+app.get("/", function (req, res) {
+    res.send("Why is this running?");
+})
 
 //Endpoints
 /*
