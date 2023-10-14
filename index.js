@@ -14,13 +14,15 @@ function log(req, res, next) {
 }
 app.use(log);
 
-app.get("/", function (req, res) {
+app.get("/products", function (req, res) {
     res.send("Why is this running?");
 })
-
+app.get("/", function (req, res) {
+    res.send("Why are you running?");
+})
 //Endpoints
-/*
-app.get("/profs", function (req, res) {
+
+app.get("/products", function (req, res) {
     fs.readFile(filename, "utf8", function (err, data) {
         res.writeHead(200, {
             "Content-Type": "application/json",
@@ -29,7 +31,7 @@ app.get("/profs", function (req, res) {
     });
 });
 
-app.get("/profs/:id", function (req, res) {
+app.get("/products/:id", function (req, res) {
     fs.readFile(filename, "utf8", function (err, data) {
         const dataAsObject = JSON.parse(data)[req.params.id];
         res.writeHead(200, {
@@ -39,7 +41,7 @@ app.get("/profs/:id", function (req, res) {
     });
 });
 
-app.put("/profs/:id", function (req, res) {
+app.put("/products/:id", function (req, res) {
     fs.readFile(filename, "utf8", function (err, data) {
         let dataAsObject = JSON.parse(data);
         dataAsObject[req.params.id].name = req.body.name;
@@ -53,7 +55,7 @@ app.put("/profs/:id", function (req, res) {
     });
 });
 
-app.delete("/profs/:id", function (req, res) {
+app.delete("/products/:id", function (req, res) {
     fs.readFile(filename, "utf8", function (err, data) {
         let dataAsObject = JSON.parse(data);
         dataAsObject.splice(req.params.id, 1);
@@ -66,7 +68,7 @@ app.delete("/profs/:id", function (req, res) {
     });
 });
 
-app.post("/profs", function (req, res) {
+app.post("/products", function (req, res) {
     fs.readFile(filename, "utf8", function (err, data) {
         let dataAsObject = JSON.parse(data);
         dataAsObject.push({
@@ -82,5 +84,14 @@ app.post("/profs", function (req, res) {
         });
     });
 });
-*/
+
+//Data
+
+const data=[
+    {id: 3057640183843, name: 'Volvic naturell (1L)', value: '0,99'},
+    {id: 40084954, name: 'Yogurette 4x (50g)', value: '2,49'},
+    {id: 20933920, name: 'Alesto Nuss-Frucht-Mix mit Cranberries (40g)', value: '4,99'},
+]
+
+
 app.listen(port, () => console.log(`Server listening on port ${port}!`));
