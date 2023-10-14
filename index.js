@@ -14,12 +14,6 @@ function log(req, res, next) {
 }
 app.use(log);
 
-app.get("/products", function (req, res) {
-    res.send("Why is this running?");
-})
-app.get("/", function (req, res) {
-    res.send("Why are you running?");
-})
 //Endpoints
 
 app.get("/products", function (req, res) {
@@ -27,7 +21,7 @@ app.get("/products", function (req, res) {
         res.writeHead(200, {
             "Content-Type": "application/json",
         });
-        res.end(data);
+        res.end(JSON.stringify(data));
     });
 });
 
@@ -74,7 +68,7 @@ app.post("/products", function (req, res) {
         dataAsObject.push({
             id: dataAsObject.length,
             name: req.body.name,
-            rating: req.body.rating,
+            value: req.body.value,
         });
         fs.writeFile(filename, JSON.stringify(dataAsObject), () => {
             res.writeHead(200, {
